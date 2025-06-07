@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Search, Bell, AlarmClock, User } from 'lucide-react';
+import { Search, Bell, AlarmClock, User, Home } from 'lucide-react';
 
 interface BottomNavigationProps {
   activeTab: string;
@@ -9,6 +9,7 @@ interface BottomNavigationProps {
 
 const BottomNavigation = ({ activeTab, onTabChange }: BottomNavigationProps) => {
   const tabs = [
+    { id: 'home', label: 'Inicio', icon: Home },
     { id: 'search', label: 'Buscar', icon: Search },
     { id: 'alerts', label: 'Alertas', icon: Bell },
     { id: 'reminders', label: 'Recordatorios', icon: AlarmClock },
@@ -26,13 +27,13 @@ const BottomNavigation = ({ activeTab, onTabChange }: BottomNavigationProps) => 
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
-              className={`flex flex-col items-center py-2 px-4 transition-colors duration-200 ${
+              className={`flex flex-col items-center py-2 px-3 transition-colors duration-200 ${
                 isActive 
                   ? 'text-primary' 
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Icon className={`w-6 h-6 mb-1 ${isActive ? 'text-primary' : ''}`} />
+              <Icon className={`w-5 h-5 mb-1 ${isActive ? 'text-primary' : ''}`} />
               <span className={`text-xs font-medium ${isActive ? 'text-primary' : ''}`}>
                 {tab.label}
               </span>

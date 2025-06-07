@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import SearchBar from '@/components/SearchBar';
@@ -8,12 +7,12 @@ import ReminderCard from '@/components/ReminderCard';
 import BottomNavigation from '@/components/BottomNavigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bell, Plus } from 'lucide-react';
+import { Bell, Plus, Search, Clock, Heart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const [showWelcome, setShowWelcome] = useState(true);
-  const [activeTab, setActiveTab] = useState('search');
+  const [activeTab, setActiveTab] = useState('home');
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [selectedMedication, setSelectedMedication] = useState<any>(null);
   const { toast } = useToast();
@@ -132,6 +131,86 @@ const Index = () => {
 
   const renderContent = () => {
     switch (activeTab) {
+      case 'home':
+        return (
+          <div className="space-y-6">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-foreground mb-2">
+                Bienvenido a Consultor FYG
+              </h1>
+              <p className="text-muted-foreground mb-8">
+                Tu asistente inteligente para medicamentos y farmacias
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <Card 
+                className="bg-card border-border cursor-pointer hover:border-primary/50 transition-colors"
+                onClick={() => setActiveTab('search')}
+              >
+                <CardContent className="p-6 text-center">
+                  <Search className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold text-foreground mb-1">Buscar</h3>
+                  <p className="text-sm text-muted-foreground">Encuentra medicamentos</p>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="bg-card border-border cursor-pointer hover:border-primary/50 transition-colors"
+                onClick={() => setActiveTab('reminders')}
+              >
+                <CardContent className="p-6 text-center">
+                  <Clock className="w-8 h-8 text-secondary mx-auto mb-3" />
+                  <h3 className="font-semibold text-foreground mb-1">Recordatorios</h3>
+                  <p className="text-sm text-muted-foreground">Gestiona tus horarios</p>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="bg-card border-border cursor-pointer hover:border-primary/50 transition-colors"
+                onClick={() => setActiveTab('alerts')}
+              >
+                <CardContent className="p-6 text-center">
+                  <Bell className="w-8 h-8 text-accent mx-auto mb-3" />
+                  <h3 className="font-semibold text-foreground mb-1">Alertas</h3>
+                  <p className="text-sm text-muted-foreground">Notificaciones activas</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card border-border">
+                <CardContent className="p-6 text-center">
+                  <Heart className="w-8 h-8 text-red-400 mx-auto mb-3" />
+                  <h3 className="font-semibold text-foreground mb-1">Salud</h3>
+                  <p className="text-sm text-muted-foreground">Tu bienestar</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="text-lg text-foreground">Acceso rápido</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Button 
+                  onClick={() => setActiveTab('search')}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mb-3"
+                >
+                  <Search className="w-4 h-4 mr-2" />
+                  Buscar medicamento
+                </Button>
+                <Button 
+                  onClick={() => setActiveTab('reminders')}
+                  variant="outline"
+                  className="w-full border-secondary text-secondary hover:bg-secondary hover:text-white"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Nuevo recordatorio
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
       case 'search':
         return (
           <div className="space-y-6">
