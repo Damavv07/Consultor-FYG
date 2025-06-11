@@ -55,6 +55,87 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #1f3038 !important;
+    color: #ffffff !important;
+  }
+
+  /* Force override any default button styles */
+  button {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  button:hover {
+    background-color: hsl(var(--primary) / 0.9) !important;
+  }
+
+  /* Override any default link colors */
+  a {
+    color: hsl(var(--primary)) !important;
+  }
+
+  a:hover {
+    color: hsl(var(--primary) / 0.8) !important;
+  }
+
+  /* Force input field colors */
+  input, textarea, select {
+    background-color: hsl(var(--input)) !important;
+    color: #ffffff !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Override any focus states */
+  input:focus, textarea:focus, select:focus, button:focus {
+    ring-color: hsl(var(--ring)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  /* Force card colors */
+  .card, [class*="card"] {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+  }
+
+  /* Override any default navigation colors */
+  nav, .nav, [class*="nav"] {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Force override any default theme colors that might leak through */
+  .bg-white, .bg-gray-50, .bg-gray-100, .bg-yellow-50, .bg-pink-50, .bg-blue-50 {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  .text-black, .text-gray-900, .text-gray-800 {
+    color: #ffffff !important;
+  }
+
+  /* Override any default radix-ui or shadcn colors */
+  [data-radix-collection-item], [data-state], [role="button"], [role="tab"] {
+    background-color: inherit !important;
+    color: inherit !important;
+  }
+
+  /* Force primary color for any accent elements */
+  .bg-blue-500, .bg-blue-600, .bg-indigo-500, .bg-indigo-600 {
+    background-color: hsl(var(--primary)) !important;
+  }
+
+  /* Force secondary color where needed */
+  .bg-green-500, .bg-green-600, .bg-teal-500, .bg-teal-600 {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  /* Force tertiary/accent color */
+  .bg-cyan-500, .bg-cyan-600, .bg-sky-500, .bg-sky-600 {
+    background-color: hsl(var(--accent)) !important;
+  }
+
+  /* Remove any unwanted colored borders */
+  .border-yellow-200, .border-pink-200, .border-blue-200, .border-gray-200 {
+    border-color: hsl(var(--border)) !important;
   }
 }
 
